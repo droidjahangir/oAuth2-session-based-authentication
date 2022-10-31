@@ -34,13 +34,16 @@ passport.use(new Strategy(AUTH_OPTIONS, verifyCallback));
 
 // Save the session to the cookie
 passport.serializeUser((user, done) => {
+  console.log('serialize user : ', user)
   done(null, user.id);
 });
 
 // Read the session from the cookie
 passport.deserializeUser((id, done) => {
-  // User.findById(id).then(user => {
-  //   done(null, user);
+  // const userInfo = await UserCollection.find({ _id })
+  // done(err, userInfo)
+  // User.findById(id, function (err, user) {
+  //   done(err, user);
   // });
   done(null, id);
 });
